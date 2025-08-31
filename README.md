@@ -27,7 +27,7 @@ It lets you collect webhooks, inspect their payloads, headers, and query params,
 
 ### 1. Clone this repo
 ```bash
-git clone https://github.com/PrasadAuti/flask-webhook-app
+git clone https://github.com/PrasadAuti/flask-webhook-app.git
 ```
 
 ### 2. Create virtual environment
@@ -48,6 +48,10 @@ python app.py
 ##### Flask will start at http://127.0.0.1:5000
 ---
 
+### 🖼️ Screenshots
+- Check Project demo and screenshot in static/demo
+
+---
 ## 📡 Usage
 1. Open the dashboard in your browser.
     > The app will generate a unique user_id and assign it via cookies.
