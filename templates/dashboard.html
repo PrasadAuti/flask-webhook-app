@@ -1,30 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webhook Dashboard</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <div class="dashboard">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h2>Your Webhooks</h2>
-      <ul id="webhook-list">
-        <!-- dynamically populated -->
-      </ul>
-    </aside>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Webhook Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h1>
+            Webhooks
+            <button id="refresh-btn" class="btn">Refresh</button>
+          </h1>
+          <div class="endpoint">
+            Endpoint: <code>/api/webhook/{{ user_id }}</code>
+          </div>
+        </div>
 
-    <!-- Main Content -->
-    <main class="content">
-      <h1>Webhook Data</h1>
-      <div id="webhook-details" class="details-box">
-        <p>Select a webhook from the left to view details.</p>
-      </div>
-    </main>
-  </div>
+        <!-- Webhook list comes right after endpoint -->
+        <ul id="webhook-list" class="webhook-list" aria-live="polite"></ul>
 
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
+        <div class="sidebar-footer">
+          <span id="count" class="count">0</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="main-header">
+          <h2 id="detail-title">Select a webhook to view details</h2>
+        </div>
+
+        <section class="detail-sections">
+          <div class="section">
+            <h3>Metadata</h3>
+            <p><strong>Method:</strong> <span id="method">—</span></p>
+            <p><strong>Received At:</strong> <span id="received_at">—</span></p>
+          </div>
+
+          <div class="section">
+            <h3>Headers</h3>
+            <pre id="headers" class="box">—</pre>
+          </div>
+
+          <div class="section">
+            <h3>Query Params</h3>
+            <pre id="qparams" class="box">—</pre>
+          </div>
+
+          <div class="section">
+            <h3>Payload</h3>
+            <pre id="payload" class="box">—</pre>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
 </html>
